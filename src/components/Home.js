@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Character from "./Character.js";
+import "./Card.css";
 
 function Home() {
     const [characters, setCharacters] = useState([]);
@@ -23,7 +24,7 @@ function Home() {
     fetchApi();
   });
 return (
-    <div>
+    <div className='characters-container'>
         {!loading ? (
             characters.map((character, index) => {
                 return <Character key={character.id} character={character}/>;
