@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import Character from "./Character.js";
 
 function Home() {
     const [characters, setCharacters] = useState([]);
+    const [loading, setLoading] = useState(true);
 
   const fetchApi = () => {
     fetch("https://rickandmortyapi.com/api/character/")
@@ -12,6 +14,7 @@ function Home() {
         .then((data) => {
             console.log(data)
             setCharacters(data.results)
+            setLoading(false)
         });
       
   };
@@ -21,9 +24,9 @@ function Home() {
   });
 return (
     <div>
-        {characters.length !== 0 ? (
-            characters.map((character) => {
-                return <p>{character.name}</p>;
+        {!loading ? (
+            characters.map((character, index) => {
+                return <Character key={character.id} character={character}/>;
             })
         ) : (
             <p>loading..</p>
