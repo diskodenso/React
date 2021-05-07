@@ -3,6 +3,8 @@
   width: 300px;
   height: 200px;
   border: 1px solid #f1f1f1;
+  margin-left: 5%;
+  margin-bottom: 12%;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -42,8 +44,12 @@
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
+  width: 300px;
+  height: 200px;
 }
+
 .characters-container {
   display: flex;
   flex-wrap: wrap;
+  margin: 20px;
 }

@@ -5,7 +5,8 @@ import "./Card.css";
 function Home() {
     const [characters, setCharacters] = useState([]);
     const [loading, setLoading] = useState(true);
-
+const [searchTerm, setSearchTerm] = useState("");
+    
   const fetchApi = () => {
     fetch("https://rickandmortyapi.com/api/character/")
         .then((response) => {
@@ -22,17 +23,28 @@ function Home() {
 
   useEffect(() => {
     fetchApi();
-  });
-return (
+  },[]);
+    function handleOnChange(e) {
+        setSearchTerm(e.target.value)
+    } console.log(characters.filter((character) => {
+               return character.name.includes(searchTerm)
+            }));
+    return (
+    <div> 
+        <input type="text" placeholder="Search..." onChange={handleOnChange} value={searchTerm}/>
     <div className='characters-container'>
         {!loading ? (
-            characters.map((character, index) => {
+            characters.filter((character) => {
+               return character.name.toLowerCase().includes(searchTerm.toLowerCase())
+            })
+                .map((character, index) => {
                 return <Character key={character.id} character={character}/>;
             })
         ) : (
             <p>loading..</p>
         )}
     </div>
+        </div>
 );
         }
 export default Home;

@@ -5,7 +5,7 @@ function Character(props) {
     const character = props.character;
     return (
         <div className='flip-card'>
-            <div className="flip-inner-card">
+            <div className="flip-card-inner">
             <div className="image-container">
                 <img src={character.image} alt=" " />
             </div> 
