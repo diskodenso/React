@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import Character from "./Character.js";
 import "./Card.css";
 
+
 function Home() {
     const [characters, setCharacters] = useState([]);
     const [loading, setLoading] = useState(true);
-const [searchTerm, setSearchTerm] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
+
     
   const fetchApi = () => {
     fetch("https://rickandmortyapi.com/api/character/")
@@ -38,10 +40,11 @@ const [searchTerm, setSearchTerm] = useState("");
                return character.name.toLowerCase().includes(searchTerm.toLowerCase())
             })
                 .map((character, index) => {
-                return <Character key={character.id} character={character}/>;
+                    return <Character key={character.id} character={character} />;
+
             })
         ) : (
-            <p>loading..</p>
+            <h2>loading..</h2>
         )}
     </div>
         </div>
